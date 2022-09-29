@@ -13,9 +13,12 @@ class NewTransaction extends StatefulWidget {
 class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
-  DateTime _selectedDate = DateTime.now();
+  DateTime? _selectedDate;
 
   void _submitData() {
+    if (!_isNumeric(_amountController.text)) {
+      return;
+    }
     final enteredTitle = _titleController.text;
     final enteredAmount = _amountController.text.isNotEmpty
         ? double.parse(_amountController.text)
@@ -25,7 +28,7 @@ class _NewTransactionState extends State<NewTransaction> {
       return;
     }
 
-    widget.addTx(enteredTitle, enteredAmount);
+    widget.addTx(enteredTitle, enteredAmount, _selectedDate);
 
     Navigator.of(context).pop();
   }
@@ -44,6 +47,13 @@ class _NewTransactionState extends State<NewTransaction> {
         _selectedDate = pickedDate;
       });
     });
+  }
+
+  bool _isNumeric(String str) {
+    if (str.isEmpty) {
+      return false;
+    }
+    return double.tryParse(str) != null;
   }
 
   @override
@@ -74,7 +84,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     child: Text(
                       _selectedDate == null
                           ? "No Date Chosen!"
-                          : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
+                          : 'Picked Date: ${DateFormat.yMd().format(_selectedDate!)}',
                     ),
                   ),
                   TextButton(
