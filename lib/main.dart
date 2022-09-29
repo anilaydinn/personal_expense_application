@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
+              button: const TextStyle(color: Colors.white),
             ),
       ),
       home: const MyHomePage(),
