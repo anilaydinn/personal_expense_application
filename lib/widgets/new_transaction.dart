@@ -24,7 +24,7 @@ class _NewTransactionState extends State<NewTransaction> {
         ? double.parse(_amountController.text)
         : 0.0;
 
-    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+    if (enteredTitle.isEmpty || enteredAmount <= 0 || _selectedDate == null) {
       return;
     }
 
