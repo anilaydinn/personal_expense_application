@@ -5,6 +5,11 @@ import 'package:personal_expense_application/widgets/transaction_list.dart';
 import 'package:personal_expense_application/models/transaction.dart';
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  // ]);
   runApp(const MyApp());
 }
 
