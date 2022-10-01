@@ -99,8 +99,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isLandScape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
+    final mediaQuery = MediaQuery.of(context);
+    final isLandScape = mediaQuery.orientation == Orientation.landscape;
     final appBar = AppBar(
       title: const Text(
         'Personal Expenses',
@@ -114,9 +114,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
     final txListWidget = SizedBox(
-      height: (MediaQuery.of(context).size.height -
+      height: (mediaQuery.size.height -
               appBar.preferredSize.height -
-              MediaQuery.of(context).padding.top) *
+              mediaQuery.padding.top) *
           0.7,
       child: TransActionList(_userTransactions, _deleteTransaction),
     );
@@ -143,9 +143,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             if (!isLandScape)
               SizedBox(
-                height: (MediaQuery.of(context).size.height -
+                height: (mediaQuery.size.height -
                         appBar.preferredSize.height -
-                        MediaQuery.of(context).padding.top) *
+                        mediaQuery.padding.top) *
                     0.3,
                 child: Chart(recentTransactions: _recentTransactions),
               ),
@@ -153,9 +153,9 @@ class _MyHomePageState extends State<MyHomePage> {
             if (isLandScape)
               _showChart
                   ? SizedBox(
-                      height: (MediaQuery.of(context).size.height -
+                      height: (mediaQuery.size.height -
                               appBar.preferredSize.height -
-                              MediaQuery.of(context).padding.top) *
+                              mediaQuery.padding.top) *
                           0.7,
                       child: Chart(recentTransactions: _recentTransactions),
                     )
