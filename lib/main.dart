@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+
 import 'package:personal_expense_application/widgets/chart.dart';
 import 'package:personal_expense_application/widgets/new_transaction.dart';
 import 'package:personal_expense_application/widgets/transaction_list.dart';
@@ -131,7 +134,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text("Show Chart"),
-                  Switch(
+                  Switch.adaptive(
+                    activeColor: Theme.of(context).colorScheme.secondary,
                     value: _showChart,
                     onChanged: (val) {
                       setState(() {
@@ -163,10 +167,12 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _startAddNewTransaction(context),
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: Platform.isIOS
+          ? Container()
+          : FloatingActionButton(
+              onPressed: () => _startAddNewTransaction(context),
+              child: const Icon(Icons.add),
+            ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
