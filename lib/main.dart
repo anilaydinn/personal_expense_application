@@ -140,8 +140,6 @@ class _MyHomePageState extends State<MyHomePage> {
       child: TransActionList(_userTransactions, _deleteTransaction),
     );
 
-    print(appBar.preferredSize.height);
-
     final pageBody = SafeArea(
       child: SingleChildScrollView(
         child: Column(
