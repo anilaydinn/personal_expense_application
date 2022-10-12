@@ -8,16 +8,43 @@ import 'package:personal_expense_application/widgets/adaptive_flat_button.dart';
 class NewTransaction extends StatefulWidget {
   final Function addTx;
 
-  const NewTransaction(this.addTx, {Key? key}) : super(key: key);
+  NewTransaction(this.addTx, {Key? key}) : super(key: key) {
+    print('Constructor NewTransaction Widget');
+  }
 
   @override
-  State<NewTransaction> createState() => _NewTransactionState();
+  State<NewTransaction> createState() {
+    print("createState NewTransaction Widget");
+    return _NewTransactionState();
+  }
 }
 
 class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime? _selectedDate;
+
+  _NewTransactionState() {
+    print("Constructor NewTransaction State");
+  }
+
+  @override
+  void initState() {
+    print("initState NewTransaction State");
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant NewTransaction oldWidget) {
+    print("didUpdateWidget NewTransaction State");
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    print("dispose NewTransaction State");
+    super.dispose();
+  }
 
   void _submitData() {
     if (!_isNumeric(_amountController.text)) {
